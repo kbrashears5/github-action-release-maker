@@ -1,0 +1,9 @@
+{
+    "description": "Github Action to create a release when triggered",
+    "homepage": "https://github.com/kbrashears5/github-action-release-creator",
+    "keywords": [
+        "release",
+        "creator",
+        "utilities"
+    ]
+}

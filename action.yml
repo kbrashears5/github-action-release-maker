@@ -1,0 +1,16 @@
+name: 'Release Creator'
+description: 'Github Action to create a release when triggered'
+author: 'kbrashears5'
+branding:
+  icon: 'upload-cloud'
+  color: 'purple'
+inputs:
+  TOKEN:
+    description: 'Personal access token with Repo privileges'
+    required: true
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.TOKEN }}
