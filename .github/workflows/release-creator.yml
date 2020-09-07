@@ -1,0 +1,16 @@
+name: Release Creator
+
+on:
+  repository_dispatch:
+    types:
+      - release
+
+jobs:
+  release_creator:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Release Creator
+        uses: kbrashears5/github-action-release-creator@master
+        with:
+          VERSION: ${{ github.event.client_payload.version }}
+          TOKEN: ${{ secrets.ACTIONS }}
