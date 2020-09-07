@@ -18,18 +18,20 @@ echo "Repository name: [$USERNAME]"
 
 # get the last commit message
 echo "Getting default branch name"
-DEFAULT_BRANCH_NAME=$(curl -X GET -H "Accept: application/vnd.github.v3+json" -u ${USERNAME}:${GITHUB_TOKEN} --silent ${GITHUB_API_URL}/repos/${GITHUB_REPOSITORY} | jq '.default_branch')
+DEFAULT_BRANCH_NAME=$(curl -X GET -H "Accept: application/vnd.github.v3+json" -u ${USERNAME}:${GITHUB_TOKEN} --silent ${GITHUB_API_URL}/repos/${GITHUB_REPOSITORY} | jq -r '.default_branch')
+DEFAULT_BRANCH_NAME=
 echo "Default branch name: [$DEFAULT_BRANCH_NAME]"
 
 # get the last commit message
 echo "Getting last commit message"
-LAST_COMMIT_MESSAGE=$(curl -X GET -H "Accept: application/vnd.github.v3+json" -u ${USERNAME}:${GITHUB_TOKEN} --silent ${GITHUB_API_URL}/repos/${GITHUB_REPOSITORY}/branches/${DEFAULT_BRANCH_NAME} | jq '.commit.commit.message')
+LAST_COMMIT_MESSAGE=$(curl -X GET -H "Accept: application/vnd.github.v3+json" -u ${USERNAME}:${GITHUB_TOKEN} --silent ${GITHUB_API_URL}/repos/${GITHUB_REPOSITORY}/branches/${DEFAULT_BRANCH_NAME} | jq -r '.commit.commit.message')
 echo "Last commit message: [$LAST_COMMIT_MESSAGE]"
 
 echo "Creating release"
+jq -n --arg lastCommitMessage "$LAST_COMMIT_MESSAGE" --arg version "$VERSION" '{tag_name:$version,name:$version,body:$lastCommitMessage}'
 jq -n \
     --arg lastCommitMessage "$LAST_COMMIT_MESSAGE" \
-    --arg version "$version" \
+    --arg version "$VERSION" \
     '{
         tag_name:$version,
         name:$version,
