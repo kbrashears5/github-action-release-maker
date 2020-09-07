@@ -31,11 +31,13 @@ jobs:
       - name: Release Creator
         uses: kbrashears5/github-action-release-creator@v1.0.0
         with:
+          VERSION: ${{ github.event.client_payload.version }}
           TOKEN: ${{ secrets.ACTIONS }}
 ```
 ## Parameters
 | Parameter | Required | Description |
 | --- | --- | --- |
+| VERSION | true | Version name to give the release |
 | TOKEN | true | Personal Access Token with Repo scope |
 
 ## Invoking
@@ -44,7 +46,7 @@ jobs:
 curl \
   -X POST \
   -H "Accept: application/vnd.github.v3+json" \
-  -d '{"event_type":"release"},{"client_payload":{"version":"v1.0.0"}}' \
+  -d '{"event_type":"release","client_payload":{"version":"v1.0.0"}}' \
   https://api.github.com/repos/{username}/{repo-name}/dispatches
 ```
 

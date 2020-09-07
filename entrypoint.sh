@@ -6,7 +6,7 @@ echo "Repository: [$GITHUB_REPOSITORY]"
 echo "Inputs"
 echo "---------------------------------------------"
 GITHUB_TOKEN="$INPUT_TOKEN"
-VERSION=${{ github.event.client_payload.version }}
+VERSION="$INPUT_VERSION"
 echo "Version: [$VERSION]"
 
 echo " "
