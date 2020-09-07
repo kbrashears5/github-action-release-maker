@@ -19,7 +19,6 @@ echo "Repository name: [$USERNAME]"
 # get the last commit message
 echo "Getting default branch name"
 DEFAULT_BRANCH_NAME=$(curl -X GET -H "Accept: application/vnd.github.v3+json" -u ${USERNAME}:${GITHUB_TOKEN} --silent ${GITHUB_API_URL}/repos/${GITHUB_REPOSITORY} | jq -r '.default_branch')
-DEFAULT_BRANCH_NAME=
 echo "Default branch name: [$DEFAULT_BRANCH_NAME]"
 
 # get the last commit message
