@@ -1,4 +1,4 @@
-name: 'Release Creator'
+name: 'Release Maker'
 description: 'Github Action to create a release when triggered'
 author: 'kbrashears5'
 branding:

@@ -1,4 +1,4 @@
-name: Release Creator
+name: Release Maker
 
 on:
   repository_dispatch:
@@ -6,11 +6,11 @@ on:
       - release
 
 jobs:
-  release_creator:
+  release_maker:
     runs-on: ubuntu-latest
     steps:
-      - name: Release Creator
-        uses: kbrashears5/github-action-release-creator@master
+      - name: Release Maker
+        uses: kbrashears5/github-action-release-maker@master
         with:
           VERSION: ${{ github.event.client_payload.version }}
           TOKEN: ${{ secrets.ACTIONS }}

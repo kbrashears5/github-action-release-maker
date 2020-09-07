@@ -1,12 +1,12 @@
-<h1 align="center">github-action-release-creator</h1>
+<h1 align="center">github-action-release-maker</h1>
 
 
 <div align="center">
 
 <b>Github Action to create a release when triggered</b>
 
-[![version](https://img.shields.io/github/v/release/kbrashears5/github-action-release-creator)](https://img.shields.io/github/v/release/kbrashears5/github-action-release-creator)
-[![Build Status](https://dev.azure.com/kbrashears5/github/_apis/build/status/kbrashears5.github-action-release-creator?branchName=master)](https://dev.azure.com/kbrashears5/github/_build/latest?definitionId=30&branchName=master)
+[![version](https://img.shields.io/github/v/release/kbrashears5/github-action-release-maker)](https://img.shields.io/github/v/release/kbrashears5/github-action-release-maker)
+[![Build Status](https://dev.azure.com/kbrashears5/github/_apis/build/status/kbrashears5.github-action-release-maker?branchName=master)](https://dev.azure.com/kbrashears5/github/_build/latest?definitionId=30&branchName=master)
 
 </div>
 
@@ -15,9 +15,9 @@
 Have releases be created automatically as part of your CI/CD, using your last commit message
 
 # Setup
-Create a new file called `/.github/workflows/release-creator.yml` that looks like so:
+Create a new file called `/.github/workflows/release-maker.yml` that looks like so:
 ```yaml
-name: Release Creator
+name: Release Maker
 
 on:
   repository_dispatch:
@@ -25,11 +25,11 @@ on:
       - release
 
 jobs:
-  release_creator:
+  release_maker:
     runs-on: ubuntu-latest
     steps:
-      - name: Release Creator
-        uses: kbrashears5/github-action-release-creator@v1.0.0
+      - name: Release Maker
+        uses: kbrashears5/github-action-release-maker@v1.0.0
         with:
           VERSION: ${{ github.event.client_payload.version }}
           TOKEN: ${{ secrets.ACTIONS }}
