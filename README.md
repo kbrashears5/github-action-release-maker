@@ -54,3 +54,5 @@ curl \
 See my yaml [templates](https://github.com/kbrashears5/yaml/blob/master/templates/create-github-release.yml) on how to use.
 
 This template will use the build number as the version of the package.
+
+You'll need to create a variable group called `github`, with a secret variable called `GITHUB_TOKEN`, with a token with repo:public_repo scope. See my yaml [example](https://github.com/kbrashears5/yaml/blob/master/examples/azure-pipelines-node.yml) on how to use.
