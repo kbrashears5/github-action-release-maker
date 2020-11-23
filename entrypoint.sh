@@ -1,5 +1,14 @@
 #!/bin/bash
 
+STATUS=0
+
+# remember last error code
+trap 'STATUS=$?' ERR
+
+# problem matcher must exist in workspace
+cp /error-matcher.json $HOME/file-sync-error-matcher.json
+echo "::add-matcher::$HOME/file-sync-error-matcher.json"
+
 echo "Repository: [$GITHUB_REPOSITORY]"
 
 # log inputs
@@ -42,3 +51,5 @@ jq -n \
         -u ${USERNAME}:${GITHUB_TOKEN} \
         --silent \
         ${GITHUB_API_URL}/repos/${GITHUB_REPOSITORY}/releases
+
+exit $STATUS
