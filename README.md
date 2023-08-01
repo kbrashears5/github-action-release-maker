@@ -1,14 +1,8 @@
-<h1 align="center">github-action-release-maker</h1>
+# github-action-release-maker
 
-
-<div align="center">
-
-<b>Github Action to create a release when triggered</b>
+Github Action to create a release when triggered
 
 [![version](https://img.shields.io/github/v/release/kbrashears5/github-action-release-maker)](https://img.shields.io/github/v/release/kbrashears5/github-action-release-maker)
-
-</div>
-
 
 # Use Cases
 Have releases be created automatically as part of your CI/CD, using your last commit message
